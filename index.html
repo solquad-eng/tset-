@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f7fb">
+    <title>구독 관리</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="js/main.js"></script>
+</head>
+<body>
+    <main class="app-shell">
+        <header class="page-header">
+            <div>
+                <p class="eyebrow">MY SUBSCRIPTIONS</p>
+                <h1>구독 관리</h1>
+                <p class="page-description">매달 나가는 구독료를 한눈에 확인해 보세요.</p>
+            </div>
+        </header>
+
+        <section class="summary-grid" aria-label="구독 지출 요약">
+            <article class="summary-card">
+                <p>월 합계</p>
+                <strong id="monthly-total">0원</strong>
+                <span>월 기준 구독료</span>
+            </article>
+            <article class="summary-card">
+                <p>연간 합계</p>
+                <strong id="yearly-total">0원</strong>
+                <span>월 합계 × 12개월</span>
+            </article>
+            <article class="summary-card summary-card-accent">
+                <p>이번 주 결제 예정</p>
+                <strong id="weekly-total">0원</strong>
+                <span id="weekly-count">예정된 결제가 없습니다</span>
+            </article>
+        </section>
+
+        <div id="status-message" class="status-message" role="status" aria-live="polite" hidden></div>
+
+        <div class="content-grid">
+            <section class="panel subscriptions-panel">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">YOUR SERVICES</p>
+                        <h2>구독 목록</h2>
+                    </div>
+                    <span id="subscription-count" class="count-badge">0개</span>
+                </div>
+                <div id="subscription-list" class="subscription-list"></div>
+            </section>
+
+            <aside class="side-column">
+                <section class="panel category-panel">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">SPENDING MIX</p>
+                            <h2>카테고리별 비중</h2>
+                        </div>
+                    </div>
+                    <div id="category-list" class="category-list"></div>
+                </section>
+
+                <section class="panel form-panel">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">ADD A SERVICE</p>
+                            <h2 id="form-title">새 구독 추가</h2>
+                        </div>
+                    </div>
+                    <form id="subscription-form">
+                        <label>
+                            구독 이름
+                            <input id="name" name="name" type="text" placeholder="예: 음악 스트리밍" maxlength="60" required>
+                        </label>
+                        <label>
+                            결제 금액
+                            <div class="amount-input">
+                                <input id="amount" name="amount" type="number" min="1" step="1" placeholder="예: 10900" required>
+                                <span>원</span>
+                            </div>
+                        </label>
+                        <div class="form-row">
+                            <label>
+                                결제 주기
+                                <select id="cycle" name="cycle">
+                                    <option value="monthly">매월</option>
+                                    <option value="yearly">매년</option>
+                                </select>
+                            </label>
+                            <label>
+                                카테고리
+                                <select id="category" name="category">
+                                    <option value="영상">영상</option>
+                                    <option value="음악">음악</option>
+                                    <option value="운동">운동</option>
+                                    <option value="생산성">생산성</option>
+                                </select>
+                            </label>
+                        </div>
+                        <label>
+                            다음 결제일
+                            <input id="next-payment-date" name="nextPaymentDate" type="date" required>
+                        </label>
+                        <label>
+                            결제 카드
+                            <select id="payment-method" name="paymentMethod">
+                                <option value="신한카드">신한카드</option>
+                                <option value="삼성카드">삼성카드</option>
+                            </select>
+                        </label>
+                        <div class="form-actions">
+                            <button id="submit-button" class="button button-primary" type="submit">구독 추가</button>
+                            <button id="cancel-edit" class="button button-secondary" type="button" hidden>취소</button>
+                        </div>
+                    </form>
+                </section>
+            </aside>
+        </div>
+        <footer>구독 정보는 이 브라우저에만 저장됩니다.</footer>
+    </main>
+</body>
+</html>
